@@ -8,14 +8,23 @@ struct Node
     int height = 1;
 };
 
+int height(Node *node)
+{
+    if (node == nullptr)
+        return 0;
+    return std::max(height(node->left), height(node->right)) + 1;
+}
+
 int bfactor(Node *node)
 {
-    return node->right->height - node->left->height;
+    return height(node->right) - height(node->left);
 }
 
 void fixheight(Node *node)
 {
-    node->height = std::max(node->left->height, node->right->height) + 1;
+    if (node == nullptr)
+        return;
+    node->height = std::max(height(node->left), height(node->right)) + 1;
 }
 
 Node *rotate_right(Node *p)
