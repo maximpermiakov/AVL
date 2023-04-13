@@ -148,3 +148,30 @@ void destroy_tree(Node *root)
         destroy_tree(root->right);
     delete root;
 }
+
+void preorder(Node *root)
+{
+    if (root == nullptr)
+        return;
+    std::cout << root->key << std::endl;
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void inorder(Node *root)
+{
+    if (root == nullptr)
+        return;
+    inorder(root->left);
+    std::cout << root->key << std::endl;
+    inorder(root->right);
+}
+
+void postorder(Node *root)
+{
+    if (root == nullptr)
+        return;
+    postorder(root->left);
+    postorder(root->right);
+    std::cout << root->key << std::endl;
+}
